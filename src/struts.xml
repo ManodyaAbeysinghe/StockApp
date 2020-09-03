@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">  
+
+<struts>
+<constant name="struts.devMode" value="true"/>
+<package name="defaukt" extends="struts-default">
+
+
+<action name="item" class="com.im.stockapp.actions.ItemAction">
+<result name="success">/item.jsp</result>
+</action>
+
+<action name="add" class="com.im.stockapp.actions.ItemAction" method="add">
+ <interceptor-ref name="fileUpload">
+ <param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
+ <param name="maximumSize">2000240</param>
+ </interceptor-ref>
+ 
+ 
+ <interceptor-ref name="params">
+ <param name="excludeParams">dojo\..*,^struts\..*</param>
+ </interceptor-ref>
+ 
+ <result name="success" type="chain">item</result>
+ <result name="input">/item.jsp</result>
+
+</action>
+
+
+
+
+<action name="supplier" class="com.im.stockapp.actions.SupplierAction">
+<result name="success">/supplier.jsp</result>
+</action>
+
+
+<action name="add" class="com.im.stockapp.actions.SupplierAction" method="add">
+ <interceptor-ref name="fileUpload">
+ <param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
+ <param name="maximumSize">2000240</param>
+ </interceptor-ref>
+ 
+ 
+ <interceptor-ref name="params">
+ <param name="excludeParams">dojo\..*,^struts\..*</param>
+ </interceptor-ref>
+ 
+ <result name="success" type="chain">supplier</result>
+ <result name="input">/supplier.jsp</result>
+
+</action>
+
+
+
+
+<action name="customer" class="com.im.stockapp.actions.CustomerAction">
+<result name="success">/customer.jsp</result>
+</action>
+
+<action name="add" class="com.im.stockapp.actions.CustomerAction" method="add">
+ <interceptor-ref name="fileUpload">
+ <param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
+ <param name="maximumSize">2000240</param>
+ </interceptor-ref>
+ 
+ 
+ <interceptor-ref name="params">
+ <param name="excludeParams">dojo\..*,^struts\..*</param>
+ </interceptor-ref>
+ 
+ <result name="success" type="chain">customer</result>
+ <result name="input">/customer.jsp</result>
+
+</action>
+
+
+
+
+
+
+
+</package>
+</struts>
